@@ -1,4 +1,7 @@
 # Cloud-Based Active Directory Lab (Azure)
+![Status: Completed](https://img.shields.io/badge/Status-Completed-brightgreen)
+![Difficulty: ★★★☆☆](https://img.shields.io/badge/Difficulty-%E2%98%85%E2%98%85%E2%98%85%E2%98%86%E2%98%86-yellow)
+
 
 This project implements a cloud-hosted Active Directory environment using Microsoft Azure.  
 It mirrors a real enterprise setup with a Domain Controller, a Windows client workstation, DNS, domain join, user provisioning, and authentication management.
@@ -40,7 +43,6 @@ I built this lab to deepen my practical understanding of identity and access man
 ![Documentation Quality: 5/5](https://img.shields.io/badge/Documentation-5/5-brightgreen)
 ![Practical Relevance: 5/5](https://img.shields.io/badge/Relevance-5/5-purple)
 ![Security Concepts: 4/5](https://img.shields.io/badge/Security-4/5-orange)
-![Difficulty: ★★★☆☆](https://img.shields.io/badge/Difficulty-%E2%98%85%E2%98%85%E2%98%85%E2%98%86%E2%98%86-yellow)
 
 ### **Overall Score**
 ![Overall Score: 23/25](https://img.shields.io/badge/Overall-23/25-success)
