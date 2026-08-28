@@ -36,19 +36,6 @@ I built this lab to deepen my practical understanding of identity and access man
 
 ---
 
-## Project Scorecard
-
-![Architecture Complexity: 4/5](https://img.shields.io/badge/Architecture-4/5-blue)
-![Troubleshooting Depth: 5/5](https://img.shields.io/badge/Troubleshooting-5/5-green)
-![Documentation Quality: 5/5](https://img.shields.io/badge/Documentation-5/5-brightgreen)
-![Practical Relevance: 5/5](https://img.shields.io/badge/Relevance-5/5-purple)
-![Security Concepts: 4/5](https://img.shields.io/badge/Security-4/5-orange)
-
-### **Overall Score**
-![Overall Score: 23/25](https://img.shields.io/badge/Overall-23/25-success)
-
----
-
 ## Architecture Overview
 
 ### Azure Resources
@@ -186,3 +173,14 @@ The environment operates as a functional Active Directory domain hosted in Azure
 - Ensured proper communication between domain controller and client
 
 ---
+
+## Project Scorecard
+
+![Architecture Complexity: 4/5](https://img.shields.io/badge/Architecture-4/5-blue)
+![Troubleshooting Depth: 5/5](https://img.shields.io/badge/Troubleshooting-5/5-green)
+![Documentation Quality: 5/5](https://img.shields.io/badge/Documentation-5/5-brightgreen)
+![Practical Relevance: 5/5](https://img.shields.io/badge/Relevance-5/5-purple)
+![Security Concepts: 4/5](https://img.shields.io/badge/Security-4/5-orange)
+
+### **Overall Score**
+![Overall Score: 23/25](https://img.shields.io/badge/Overall-23/25-success)
