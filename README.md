@@ -1,16 +1,15 @@
 # Cloud-Based Active Directory Lab (Azure)
 ![Status: Completed](https://img.shields.io/badge/Status-Completed-brightgreen)
 ![Difficulty: ★★★☆☆](https://img.shields.io/badge/Difficulty-%E2%98%85%E2%98%85%E2%98%85%E2%98%86%E2%98%86-yellow)
+[![Time Spent: 20h](https://img.shields.io/badge/Hours%20Completed-20h-orange)]() 
 
+In this project, I built and configured a cloud-hosted Active Directory environment in Microsoft Azure to mirror a real-world enterprise infrastructure. I deployed a Domain Controller, domain-joined a Windows 11 client workstation, managed custom DNS resolution, and handled user provisioning and authentication.
 
-This project implements a cloud-hosted Active Directory environment using Microsoft Azure.  
-It mirrors a real enterprise setup with a Domain Controller, a Windows client workstation, DNS, domain join, user provisioning, and authentication management.
-
-The lab strengthens practical skills in identity management, Windows Server administration, Azure networking, and foundational SOC analysis.
+This hands-on project allowed me to strengthen my practical skills in identity and access management (IAM), Windows Server administration, Azure network routing, and foundational security event analysis.
 
 ## Why I Built This Lab
 
-I built this lab to deepen my practical understanding of identity and access management by recreating the core systems used in real organisations. Working hands-on with Azure, Active Directory, DNS, and Windows Server allowed me to troubleshoot real issues, understand how cloud and on‑prem environments interact, and build confidence with tools commonly used in cybersecurity and IT operations.
+I built this lab to deepen my practical understanding of identity and access management by recreating the core systems used in enterprise environments. Working hands-on with Azure, Active Directory, DNS, and Windows Server allowed me to troubleshoot real-world deployment issues, understand how cloud and on-premise architectures interact, and gain confidence using key SOC and IT operations tools.
 
 ---
 
@@ -45,14 +44,14 @@ I built this lab to deepen my practical understanding of identity and access man
 
 ### Virtual Machines
 
-#### DC01 — Windows Server 2022 Datacenter Azure Edition
+#### 1. DC01 — Windows Server 2022 Datacenter Azure Edition
 - **Private IP:** `10.0.0.4` (Static)
 - **Roles:** Active Directory Domain Services (AD DS), DNS
 - **Domain:** `corp.local`
 - **DNS Zones:** `corp.local`, `msdcs.corp.local`
 - Promoted to Domain Controller using Server Manager and AD DS role installation.
 
-#### CLIENT01 — Windows 11 Pro
+#### 2. CLIENT01 — Windows 11 Pro
 - **Private IP:** `10.0.0.5`
 - **DNS:** Configured to point to `10.0.0.4` (DC01)
 - Successfully joined to the `corp.local` domain.
@@ -90,29 +89,25 @@ graph TD
 ## Troubleshooting & Resolutions
 
 ### 1. Dynamic Private IP on DC01
-Azure assigns dynamic private IPs by default, which is unsuitable for domain controllers.
-
-**Resolution:**  
-Updated the NIC configuration for DC01 to use a static private IP (`10.0.0.4`).
+* **The Issue:** Azure assigns dynamic private IPs by default, which breaks Domain Controller reliability and DNS stability.
+* **My Resolution:** I reconfigured the Network Interface Card (NIC) settings for `DC01` within Azure to assign a static private IP (`10.0.0.4`).
 
 ### 2. Client Unable to Join Domain
 **Observed symptoms:**
 - Connection-specific DNS suffix: `reddog.microsoft.com`
-- `whoami` output: `client01\azureuser`
+- `whoami` returned `client01\azureuser` instead of domain credentials.
 - Domain join attempts failing or not resolving `corp.local`.
 
 **Root Cause:**  
-CLIENT01 was using Azure’s default DNS instead of the Domain Controller.
+CLIENT01 was using Azure’s default DNS instead of my Domain Controller.
 
 **Resolution:**  
-- Manually set CLIENT01’s DNS server to `10.0.0.4`.
-- Confirmed AD-VNet DNS configuration to use the Domain Controller IP.
+1. I manually updated `CLIENT01`'s network adapter settings to point to `10.0.0.4`.
+2. I updated the `AD-VNet` DNS settings in the Azure portal to ensure custom DNS inheritance across the virtual network.
 
-### 3. RDP Login Defaulting to Local Account
-RDP login dialog auto-filled the local admin account (`azureuser`), preventing domain user login.
-
-**Resolution:**  
-Used **“More choices → Use a different account”** in the RDP login prompt to authenticate as `corp\alice`.
+### 3. RDP Login Defaulting to Local VM Account
+* **The Issue:** Windows RDP automatically attempted to authenticate using the local admin account (`azureuser`), preventing domain user login.
+* **My Resolution:** I used *“More choices → Use a different account”* in the RDP interface to explicitly authenticate using domain credentials (`corp\alice`). 
 
 ---
 
@@ -140,37 +135,10 @@ The environment operates as a functional Active Directory domain hosted in Azure
 
 ## Key Skills Demonstrated
 
-#### Active Directory Deployment
-- Installed and configured AD DS on Windows Server 2022  
-- Promoted a server to Domain Controller  
-- Created a functional domain (`corp.local`)  
-- Managed DNS zones and domain services
-
-#### Azure Infrastructure Configuration
-- Provisioned VMs, VNets, NICs, and resource groups  
-- Configured static IPs for critical infrastructure  
-- Applied custom DNS settings at both VNet and NIC levels
-
-#### Identity & Access Management
-- Created Organizational Units and domain users  
-- Managed passwords, account properties, and group memberships  
-- Validated domain authentication using domain accounts
-
-#### Windows Server Administration
-- Used Server Manager, ADUC, DNS Manager, and system tools  
-- Performed domain join operations and workstation configuration  
-- Managed RDP access and local group membership
-
-#### Troubleshooting & Problem Solving
-- Diagnosed DNS misconfigurations  
-- Interpreted symptoms like incorrect `whoami` output  
-- Resolved domain join failures  
-- Corrected Azure default behaviors that conflicted with AD requirements
-
-#### Enterprise Networking Concepts
-- Understood DNS resolution paths  
-- Managed IP addressing and gateway configuration  
-- Ensured proper communication between domain controller and client
+* **Active Directory Deployment:** Installed AD DS, promoted domain controllers, created domain structures (`corp.local`), and managed DNS zones.
+* **Cloud Infrastructure Management:** Configured Azure VNets, static IP allocation, custom DNS settings, and VM resource allocation.
+* **Identity & Access Control:** Managed OUs, users, group memberships, and Remote Desktop privileges.
+* **System Administration & Triage:** Used Server Manager, ADUC, and CLI commands to troubleshoot domain join failures and network misconfigurations.
 
 ---
 
