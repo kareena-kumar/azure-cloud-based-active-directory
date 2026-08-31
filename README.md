@@ -1,7 +1,7 @@
 # Cloud-Based Active Directory Lab (Azure)
 ![Status: Completed](https://img.shields.io/badge/Status-Completed-brightgreen)
 ![Difficulty: ★★★☆☆](https://img.shields.io/badge/Difficulty-%E2%98%85%E2%98%85%E2%98%85%E2%98%86%E2%98%86-yellow)
-[![Time Spent: 20h](https://img.shields.io/badge/Hours%20Completed-20h-orange)]() 
+[![Time Spent: 20h](https://img.shields.io/badge/Time%20Spent-20h-orange)]()
 
 In this project, I built and configured a cloud-hosted Active Directory environment in Microsoft Azure to mirror a real-world enterprise infrastructure. I deployed a Domain Controller, domain-joined a Windows 11 client workstation, managed custom DNS resolution, and handled user provisioning and authentication.
 
